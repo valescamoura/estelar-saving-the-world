@@ -13,15 +13,15 @@ def Play():
 
     keyboard = Window.get_keyboard()
 
-    contador_vidas = GameImage("cont_vidas.png")
-    contador_cristais = GameImage("cont_cristal.png")
+    contador_vidas = GameImage("assets/sprites/cont_vidas.png")
+    contador_cristais = GameImage("assets/sprites/cont_cristal.png")
     contador_cristais.x = contador_vidas.width + 2
 
     #CRIAR CENARIO
     x_da_tela = 0
     cenario = []
     for i in range(10):
-        fundo = [Sprite("background1.png"), Sprite("background2.png"), Sprite("background3.png")]
+        fundo = [Sprite("assets/sprites/background1.png"), Sprite("assets/sprites/background2.png"), Sprite("assets/sprites/background3.png")]
         for j in range(3):
             fundo[j].x = x_da_tela
         x_da_tela += janela.width
@@ -33,7 +33,7 @@ def Play():
     plataformas = []
     for i in range(3):
         for j in range(8):
-            plat = Sprite("plataforma.png")
+            plat = Sprite("assets/sprites/plataforma.png")
             plat.x = x_da_plat
             plat.y = 300
             x_da_plat += plat.width + 40
@@ -62,11 +62,11 @@ def Play():
     x_da_plat = plataformas[5].x + plataformas[5].width + 50
     cristais = []
     for i in range(3):
-        plat = Sprite("plataforma.png")
+        plat = Sprite("assets/sprites/plataforma.png")
         plat.x = x_da_plat
         plat.y = 300
         plataformas.append(plat)
-        crist = Sprite("cristal.png")
+        crist = Sprite("assets/sprites/cristal.png")
         crist.x = x_da_plat + plat.width/2 - crist.width/2 + 50
         crist.y = plat.y - crist.height - 200
         cristais.append(crist)
@@ -77,7 +77,7 @@ def Play():
     #CRIAR CORACOES
     coracao = []
     for i in range(3):
-        corac = Sprite("coração.png")
+        corac = Sprite("assets/sprites/coração.png")
         corac.y = 170 - corac.height
         coracao.append(corac)
     coracao[0].x = plataformas[7].x + plataformas[7].width/2 - corac.width/2
@@ -85,7 +85,7 @@ def Play():
     coracao[2].x = plataformas[23].x + plataformas[23].width / 2 - corac.width / 2
 
     #CRIAR ESTELAR
-    estelar = Sprite("rparada.png", 12)
+    estelar = Sprite("assets/sprites/rparada.png", 12)
     x_estelar = 0
     y_estelar = janela.height - estelar.height
     estelar.y = y_estelar
@@ -97,7 +97,7 @@ def Play():
     x_vilao = 800
     vel_vilao = -80
     for i in range(25):
-        vilao = Sprite("left.png", 4)
+        vilao = Sprite("assets/sprites/left.png", 4)
         vilao.x = x_vilao
         vilao.y = janela.height - vilao.height
         x_vilao += 290
@@ -105,14 +105,14 @@ def Play():
         viloes.append(vilao)
 
     # NAVE DO VILAO
-    navev = Sprite('navevilão2.png')
+    navev = Sprite('assets/sprites/navevilão2.png')
     navev.x = janela.width
     navev.y = 40
     vel_navev = -280
     cont = 20
 
     # VILAO ALEATORIO
-    nave_aleat = Sprite("navevilão2.png")
+    nave_aleat = Sprite("assets/sprites/navevilão2.png")
     nave_aleat.x = janela.width
     nave_aleat.y = 20
     aleat = randint(600, 1200)
@@ -135,17 +135,17 @@ def Play():
     score = 0
 
     #VARIAVEIS DE FIM DE JOGO
-    winner = Sprite("winner.png")
+    winner = Sprite("assets/sprites/winner.png")
     winner.x = janela.width/2 - winner.width/2
     winner.y = janela.height/2 - winner.height/2
-    gameover = Sprite("gameover.png")
+    gameover = Sprite("assets/sprites/gameover.png")
     gameover.x = janela.width/2 - gameover.width/2
     gameover.y = janela.height/2 - gameover.height/2
-    final = Sprite("navevilão.png")
+    final = Sprite("assets/sprites/navevilão.png")
     final.set_position(cenario[9][0].x + janela.width - final.width, janela.height - final.height)
 
     # VILÃ PRINCIPAL
-    vila = Sprite("vila_parada.png", 16)
+    vila = Sprite("assets/sprites/vila_parada.png", 16)
     vila.set_position(final.x - 1 - vila.width, janela.height - vila.height)
     time_vila = 1.5
     time_vvila = 1
@@ -159,15 +159,15 @@ def Play():
     tempo_transcorrido = 0
 
     #SONS:
-    som_pulo = Sound('pulo.ogg')
-    som_navev = Sound('somnavev.ogg')
-    som_efeito = Sound('efeito.ogg')
-    som_colisao_est_v = Sound("estelar_vilao.ogg")
-    som_winner = Sound("tema.ogg")
-    som_gameover = Sound("gameoversom.ogg")
-    som_tiro_nave_aleat = Sound("tironave.ogg")
-    som_magia = Sound("som_magia.ogg")
-    som_colisao = Sound("somcolisao.ogg")
+    som_pulo = Sound('assets/sounds/pulo.ogg')
+    som_navev = Sound('assets/sounds/somnavev.ogg')
+    som_efeito = Sound('assets/sounds/efeito.ogg')
+    som_colisao_est_v = Sound("assets/sounds/estelar_vilao.ogg")
+    som_winner = Sound("assets/sounds/tema.ogg")
+    som_gameover = Sound("assets/sounds/gameoversom.ogg")
+    som_tiro_nave_aleat = Sound("assets/sounds/tironave.ogg")
+    som_magia = Sound("assets/sounds/som_magia.ogg")
+    som_colisao = Sound("assets/sounds/somcolisao.ogg")
 
     ######## LOOP ########
     while True:
@@ -187,7 +187,7 @@ def Play():
                 if time_nave_aleat >= 1:
                     som_tiro_nave_aleat.set_volume(50)
                     som_tiro_nave_aleat.play()
-                    tiro = Sprite("tiro_nave.png")
+                    tiro = Sprite("assets/sprites/tiro_nave.png")
                     tiro.set_position(nave_aleat.x+nave_aleat.width-tiro.width/2, nave_aleat.y+nave_aleat.height)
                     lista_de_tiros.append(tiro)
                     time_nave_aleat = 0
@@ -195,7 +195,7 @@ def Play():
                 nave_aleat.x = janela.width
                 aleat = randint(600, 1200)
 
-        #COLISAO DO TIRO DA NAVE ALEATORIA COM A ESTELAR/MOVER/VERIFICAR COORDENADAS DO TIRO
+        # COLISAO DO TIRO DA NAVE ALEATORIA COM A ESTELAR/MOVER/VERIFICAR COORDENADAS DO TIRO
         for z in range(len(lista_de_tiros)):
             lista_de_tiros[z].y += 3
             if lista_de_tiros[z].collided(estelar):
@@ -205,9 +205,9 @@ def Play():
                 som_colisao_est_v.play()
                 x_estelar = estelar.x
                 if move == "r":
-                    estelar = Sprite("rhurt.png", 6)
+                    estelar = Sprite("assets/sprites/rhurt.png", 6)
                 else:
-                    estelar = Sprite("lhurt.png", 6)
+                    estelar = Sprite("assets/sprites/lhurt.png", 6)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
                 estelar.set_loop(False)
@@ -231,13 +231,13 @@ def Play():
             som_magia.play()
             x_estelar = estelar.x
             if move == "r":
-                estelar = Sprite("rmagia.png", 7)
-                magia = Sprite("power.png", 11)
+                estelar = Sprite("assets/sprites/rmagia.png", 7)
+                magia = Sprite("assets/sprites/power.png", 11)
                 magia.x = x_estelar
                 vel_magia = 3
             else:
-                estelar = Sprite("lmagia.png", 7)
-                magia = Sprite("power.png", 11)
+                estelar = Sprite("assets/sprites/lmagia.png", 7)
+                magia = Sprite("assets/sprites/power.png", 11)
                 magia.x = x_estelar - magia.width
                 vel_magia = -3
             estelar.set_loop(False)
@@ -252,9 +252,9 @@ def Play():
             pula = True
             x_estelar = estelar.x
             if move == "r":
-                estelar = Sprite("rpulando.png", 9)
+                estelar = Sprite("assets/sprites/rpulando.png", 9)
             else:
-                estelar = Sprite("lpulando.png", 9)
+                estelar = Sprite("assets/sprites/lpulando.png", 9)
             estelar.set_loop(False)
             estelar.x = x_estelar
             estelar.y = y_estelar
@@ -266,7 +266,7 @@ def Play():
                 andando = True
                 delta_time = 0
                 x_estelar = estelar.x
-                estelar = Sprite("randando.png", 12)
+                estelar = Sprite("assets/sprites/randando.png", 12)
                 estelar.set_loop(False)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
@@ -299,7 +299,7 @@ def Play():
                 andando = True
                 delta_time = 0
                 x_estelar = estelar.x
-                estelar = Sprite("landando.png", 12)
+                estelar = Sprite("assets/sprites/landando.png", 12)
                 estelar.set_loop(False)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
@@ -328,11 +328,11 @@ def Play():
                     x_estelar = estelar.x
         elif not estelar.is_playing() and andando == False:
             if move == "r":
-                estelar = Sprite("rparada.png", 12)
+                estelar = Sprite("assets/sprites/rparada.png", 12)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
             else:
-                estelar = Sprite("lparada.png", 12)
+                estelar = Sprite("assets/sprites/lparada.png", 12)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
 
@@ -358,9 +358,9 @@ def Play():
             if not (plataformas[plat_atual].x <= estelar.x + estelar.width/2 <= plataformas[plat_atual].x + plataformas[plat_atual].width) and pula is False:
                 plat_up = False
                 if move == "r":
-                    estelar = Sprite("rpulando.png", 9)
+                    estelar = Sprite("assets/sprites/rpulando.png", 9)
                 else:
-                    estelar = Sprite("lpulando.png", 9)
+                    estelar = Sprite("assets/sprites/lpulando.png", 9)
                 estelar.y = y_estelar
                 estelar.x = x_estelar
                 estelar.set_sequence(4, 8, loop=False)
@@ -427,9 +427,9 @@ def Play():
                     cont_vidas -= 1
                     x_estelar = estelar.x
                     if move == "r":
-                        estelar = Sprite("rhurt.png", 6)
+                        estelar = Sprite("assets/sprites/rhurt.png", 6)
                     else:
-                        estelar = Sprite("lhurt.png", 6)
+                        estelar = Sprite("assets/sprites/lhurt.png", 6)
                     estelar.x = x_estelar
                     estelar.y = y_estelar
                     estelar.set_loop(False)
@@ -440,10 +440,10 @@ def Play():
                 time_vila = 0
                 som_magia.set_volume(100)
                 som_magia.play()
-                vila = Sprite("vila_magia.png", 10)
+                vila = Sprite("assets/sprites/vila_magia.png", 10)
                 vila.set_loop(False)
                 vila.set_position(final.x - 1 - vila.width, janela.height - vila.height)
-                magia = Sprite("vila_power.png", 11)
+                magia = Sprite("assets/sprites/vila_power.png", 11)
                 magia.set_total_duration(2000)
                 magia.set_loop(False)
                 magia.x = vila.x - magia.width
@@ -451,14 +451,14 @@ def Play():
                 magia_vila.append(magia)
             elif vidas_vila <= 0 and morreu == 0:
                 if time_vvila >= 1:
-                    vila = Sprite("vila_gameover.png", 6)
+                    vila = Sprite("assets/sprites/vila_gameover.png", 6)
                     vila.set_loop(False)
                     vila.set_position(final.x - 1 - vila.width, janela.height - vila.height)
                 elif time_vvila <= 0:
                     morreu = 1
                 time_vvila -= janela.delta_time()
             elif not vila.is_playing() and morreu == 0:
-                vila = Sprite("vila_parada.png", 16)
+                vila = Sprite("assets/sprites/vila_parada.png", 16)
                 vila.set_loop(False)
                 vila.set_position(final.x - 1 - vila.width, janela.height - vila.height)
             elif morreu == 1:
@@ -475,7 +475,7 @@ def Play():
                 som_magia.stop()
                 som_colisao.set_volume(100)
                 som_colisao.play()
-                vila = Sprite("vila_hurt.png", 6)
+                vila = Sprite("assets/sprites/vila_hurt.png", 6)
                 vila.set_loop(False)
                 vila.set_position(final.x - 1 - vila.width, janela.height - vila.height)
                 magia_estelar.pop(i)
@@ -491,9 +491,9 @@ def Play():
                 som_colisao_est_v.play()
                 x_estelar = estelar.x
                 if move == "r":
-                    estelar = Sprite("rhurt.png", 6)
+                    estelar = Sprite("assets/sprites/rhurt.png", 6)
                 else:
-                    estelar = Sprite("lhurt.png", 6)
+                    estelar = Sprite("assets/sprites/lhurt.png", 6)
                 estelar.x = x_estelar
                 estelar.y = y_estelar
                 estelar.set_loop(False)
@@ -567,7 +567,7 @@ def Play():
             som_winner.set_volume(70)
             som_winner.play()
             print("Digite seu nome (max=10 caract.) para ser registrado no Rank:")
-            arquivo = open("ranking.txt", "a")
+            arquivo = open("assets/data/ranking.txt", "a")
             nome = input()
             arquivo.write(nome + '\t' + str(score) + '\n')
             arquivo.close()
@@ -582,7 +582,7 @@ def Play():
             som_gameover.set_volume(70)
             som_gameover.play()
             print("Digite seu nome (max=10 caract.) para ser registrado no Rank:")
-            arquivo = open("ranking.txt", "a")
+            arquivo = open("assets/data/ranking.txt", "a")
             nome = input()
             arquivo.write(nome + '\t' + str(score) + '\n')
             arquivo.close()

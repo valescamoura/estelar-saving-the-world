@@ -5,7 +5,7 @@ from PPlay.keyboard import *
 def Ajuda():
     janela = Window(800, 600)
     janela.set_title("Estelar: Saving the World")
-    fundo = GameImage("telahelp.png")
+    fundo = GameImage("assets/sprites/telahelp.png")
 
     keyboard = Window.get_keyboard()
 

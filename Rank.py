@@ -29,11 +29,11 @@ def Formatar(lista):
 def Rank():
     janela = Window(800, 600)
     janela.set_title("Estelar: Saving the World")
-    fundo = GameImage("rankingtela.png")
+    fundo = GameImage("assets/sprites/rankingtela.png")
 
     keyboard = Window.get_keyboard()
 
-    arquivo = open("ranking.txt", "r")
+    arquivo = open("assets/data/ranking.txt", "r")
     rank = []
     for linha in arquivo:
        linha = linha.rstrip('\n')
